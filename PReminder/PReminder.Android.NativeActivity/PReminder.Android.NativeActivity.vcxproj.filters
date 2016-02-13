@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="src\core\android_native_app_glue.h">
+      <Filter>core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\core\android_native_app_glue.c">
+      <Filter>core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{41fe51a0-bd3e-486b-a1a7-4a5a43d3a69c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
