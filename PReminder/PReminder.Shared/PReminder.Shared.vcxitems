@@ -14,13 +14,18 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)MathHelper.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)SimpleRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Singleton.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Shader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Texture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Camera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Sprite.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)SimpleRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Shader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Texture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Camera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Sprite.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.cpp" />
   </ItemGroup>
 </Project>

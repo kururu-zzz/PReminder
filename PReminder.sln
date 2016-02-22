@@ -15,11 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PReminder.Shared", "PRemind
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PReminder.Android.StaticLibrary", "PReminder\PReminder.Android.StaticLibrary\PReminder.Android.StaticLibrary.vcxproj", "{3059826C-6A2F-4675-AC39-873D2CCCB1F2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PReminder.iOS.StaticLibrary", "PReminder\PReminder.iOS.StaticLibrary\PReminder.iOS.StaticLibrary.vcxproj", "{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		PReminder\PReminder.Shared\PReminder.Shared.vcxitems*{1c49baa3-a4e9-4bb6-81ca-6995dd659c58}*SharedItemsImports = 4
 		PReminder\PReminder.Shared\PReminder.Shared.vcxitems*{3059826c-6a2f-4675-ac39-873d2cccb1f2}*SharedItemsImports = 4
 		PReminder\PReminder.Shared\PReminder.Shared.vcxitems*{11099b8b-a8e1-434f-b6ee-af15f7efa7ea}*SharedItemsImports = 9
 	EndGlobalSection
@@ -90,22 +87,6 @@ Global
 		{3059826C-6A2F-4675-AC39-873D2CCCB1F2}.Release|x64.Build.0 = Release|x64
 		{3059826C-6A2F-4675-AC39-873D2CCCB1F2}.Release|x86.ActiveCfg = Release|x86
 		{3059826C-6A2F-4675-AC39-873D2CCCB1F2}.Release|x86.Build.0 = Release|x86
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|ARM.ActiveCfg = Debug|ARM
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|ARM.Build.0 = Debug|ARM
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|ARM64.ActiveCfg = Debug|ARM64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|ARM64.Build.0 = Debug|ARM64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|x64.ActiveCfg = Debug|x64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|x64.Build.0 = Debug|x64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|x86.ActiveCfg = Debug|x86
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Debug|x86.Build.0 = Debug|x86
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|ARM.ActiveCfg = Release|ARM
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|ARM.Build.0 = Release|ARM
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|ARM64.ActiveCfg = Release|ARM64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|ARM64.Build.0 = Release|ARM64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|x64.ActiveCfg = Release|x64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|x64.Build.0 = Release|x64
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|x86.ActiveCfg = Release|x86
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +96,5 @@ Global
 		{5FE3674D-3026-4836-A7D5-8B0D34F3999E} = {48035FF2-2290-434B-8FD3-3D6314FBAE17}
 		{11099B8B-A8E1-434F-B6EE-AF15F7EFA7EA} = {3BBE280F-2ED8-4DD9-A483-19A4B3F24A56}
 		{3059826C-6A2F-4675-AC39-873D2CCCB1F2} = {3BBE280F-2ED8-4DD9-A483-19A4B3F24A56}
-		{1C49BAA3-A4E9-4BB6-81CA-6995DD659C58} = {3BBE280F-2ED8-4DD9-A483-19A4B3F24A56}
 	EndGlobalSection
 EndGlobal

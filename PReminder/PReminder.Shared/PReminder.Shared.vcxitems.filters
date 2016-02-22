@@ -1,13 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)SimpleRenderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Sprite.cpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Sprite.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Camera.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Shader.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Texture.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Singleton.h">
+      <Filter>manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)MathHelper.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)SimpleRenderer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Sprite.h" />
+    <Filter Include="object">
+      <UniqueIdentifier>{54cca725-ee37-461e-8e4e-6ccf346bdb0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{8b123aa0-ad96-4972-bc36-aa0db670b303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="manager">
+      <UniqueIdentifier>{b12f114c-b692-4c91-8503-256c110922ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Sprite.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Camera.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Texture.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Shader.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
