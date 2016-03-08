@@ -2,6 +2,7 @@
 
 #include "Sprite.h"
 #include "../manager/Shader.h"
+#include "../manager/Texture.h"
 
 namespace gl
 {
@@ -91,7 +92,7 @@ namespace gl
 		void Sprite::ChangeImage(const std::string& fileName)
 		{
 			this->fileName = fileName;
-			//CreateTexture(fileName);
+			manager::Texture::Get()->CreateTexture(fileName);
 		}
 
 		void Sprite::SetUV(const glm::vec4& texel) {
@@ -176,6 +177,7 @@ namespace gl
 				shaderManager->CreateShader(GL_FRAGMENT_SHADER, "sprite", "shader/test.frag"));
 
 			GLuint gvPositionHandle = glGetAttribLocation(program, "position");
+			GLuint gvUVHandle = glGetAttribLocation(program, "attr_uv");
 			glm::mat4x4 viewportMatrix = glm::mat4x4();
 			viewportMatrix[0][0] = 2.f / 720.f;
 			viewportMatrix[1][1] = -2.0f / 1184.f;
@@ -184,7 +186,7 @@ namespace gl
 			GLuint viewportHandle = glGetUniformLocation(program, "viewportMatrix");
 
 			SetVertexPos(vertexList, this->pos, this->base, this->size, this->degree);
-			const std::array<glm::vec3, 4> vertices = 
+			const std::array<glm::vec3, 4> vertices =
 			{
 				{
 				vertexList[0]->pos,
@@ -194,12 +196,24 @@ namespace gl
 				}
 			};
 
+			const std::array<glm::vec2, 4> uvs =
+			{
+				{
+					vertexList[0]->texel,
+					vertexList[1]->texel,
+					vertexList[2]->texel,
+					vertexList[3]->texel,
+				}
+			};
+			
 			glUseProgram(program);
+			gl::manager::Texture::Get()->SetTexture(this->fileName, program, "uniform_texture");
 			glVertexAttribPointer(gvPositionHandle, 3, GL_FLOAT, false, 0, vertices.data());
+			glVertexAttribPointer(gvUVHandle, 2, GL_FLOAT, false, 0, uvs.data());
 			glEnableVertexAttribArray(gvPositionHandle);
+			glEnableVertexAttribArray(gvUVHandle);
 			glUniformMatrix4fv(viewportHandle, 1, false, &(viewportMatrix[0][0]));
 			//UpdateVertex(vertexList, deviceContext);
-			//SetTexture(deviceContext,fileName);
 
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		}

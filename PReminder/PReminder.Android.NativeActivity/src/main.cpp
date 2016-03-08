@@ -118,10 +118,13 @@ static int engine_init_display(struct engine* engine) {
 	engine->height = h;
 	engine->state.angle = 0;
 
+	gl::manager::Shader::Get()->Init (engine->app->activity->assetManager, &engine->app->mutex);
+	gl::manager::Texture::Get()->Init(engine->app->activity->assetManager, &engine->app->mutex);
+
 	if (!engine->sprite)
 	{
 		engine->sprite = std::make_shared<gl::object::Sprite>();
-		engine->sprite->Init(glm::vec3(0.f, 0.f, 0.f), glm::vec2(500.f, 900.f), glm::vec4(0.f, 0.f, 1.f, 1.f), "");
+		engine->sprite->Init(glm::vec3(0.f, 0.f, 0.f), glm::vec2(500.f, 900.f), glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/test.png");
 	}
 
 	return 0;
@@ -137,9 +140,8 @@ static void engine_draw_frame(struct engine* engine) {
 	}
 	glClearColor(0.f, 1.f, 0.f, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	engine->sprite->Draw();
-
+	//engine->sprite->ChangeImage("texture/test2.png");
 	eglSwapBuffers(engine->display, engine->surface);
 }
 
@@ -250,8 +252,6 @@ void android_main(struct android_app* state) {
 	}
 
 	engine.animating = 1;
-	gl::manager::Shader::Get()->Init(engine.app->activity->assetManager, &engine.app->mutex);
-	gl::manager::Texture::Get()->Init(engine.app->activity->assetManager, &engine.app->mutex);
 	// ループはスタッフによる開始を待っています。
 
 	while (1) {
@@ -281,6 +281,10 @@ void android_main(struct android_app* state) {
 							event.acceleration.x, event.acceleration.y,
 							event.acceleration.z);
 					}
+					if ((int)event.acceleration.x >= 0)
+						engine.sprite->ChangeImage("texture/test.png");
+					else
+						engine.sprite->ChangeImage("texture/test3.png");
 				}
 			}
 

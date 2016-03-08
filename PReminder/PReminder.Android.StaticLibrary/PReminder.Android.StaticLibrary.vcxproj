@@ -34,6 +34,35 @@
       <Platform>x86</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libpng\jni\config.h" />
+    <ClInclude Include="libpng\jni\png.h" />
+    <ClInclude Include="libpng\jni\pngconf.h" />
+    <ClInclude Include="libpng\jni\pngdebug.h" />
+    <ClInclude Include="libpng\jni\pnginfo.h" />
+    <ClInclude Include="libpng\jni\pnglibconf.h" />
+    <ClInclude Include="libpng\jni\pngprefix.h" />
+    <ClInclude Include="libpng\jni\pngpriv.h" />
+    <ClInclude Include="libpng\jni\pngstruct.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="libpng\jni\png.c" />
+    <ClCompile Include="libpng\jni\pngerror.c" />
+    <ClCompile Include="libpng\jni\pngget.c" />
+    <ClCompile Include="libpng\jni\pngmem.c" />
+    <ClCompile Include="libpng\jni\pngpread.c" />
+    <ClCompile Include="libpng\jni\pngread.c" />
+    <ClCompile Include="libpng\jni\pngrio.c" />
+    <ClCompile Include="libpng\jni\pngrtran.c" />
+    <ClCompile Include="libpng\jni\pngrutil.c" />
+    <ClCompile Include="libpng\jni\pngset.c" />
+    <ClCompile Include="libpng\jni\pngtest.c" />
+    <ClCompile Include="libpng\jni\pngtrans.c" />
+    <ClCompile Include="libpng\jni\pngwio.c" />
+    <ClCompile Include="libpng\jni\pngwrite.c" />
+    <ClCompile Include="libpng\jni\pngwtran.c" />
+    <ClCompile Include="libpng\jni\pngwutil.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3059826c-6a2f-4675-ac39-873d2cccb1f2}</ProjectGuid>
     <Keyword>Android</Keyword>
@@ -103,6 +132,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <ReferencePath>
+    </ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
   </PropertyGroup>
@@ -156,12 +188,20 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>..\PReminder.Shared\pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Enabled</ExceptionHandling>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
     </ClCompile>
+    <CustomBuildStep>
+      <Inputs>%(Inputs)</Inputs>
+    </CustomBuildStep>
+    <Lib />
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>

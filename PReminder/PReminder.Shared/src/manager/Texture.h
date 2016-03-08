@@ -10,13 +10,14 @@ namespace gl
 {
 	namespace manager
 	{
+		struct TextureData;
 		/**
 		* @brief テクスチャのコンテナクラス
 		*/
 		class Texture : public Singleton<Texture>
 		{
 		private:
-			std::unordered_map<std::string, std::shared_ptr<GLuint>> textureContainer;
+			std::unordered_map<std::string, std::shared_ptr<TextureData>> textureContainer;
 		private:
 			friend class Singleton<Texture>;
 			Texture() {}
@@ -29,11 +30,8 @@ namespace gl
 
 			/**
 			* @brief テクスチャの作成、コンテナに登録
-			* @param deviceContext:テクスチャをセットするコンテキスト
-			* @param fileName:テクスチャのファイル名(パス込)
-			* @param slotNum:シェーダーのレジスタ番号
 			*/
-			void SetTexture(const std::string& fileName);
+			void SetTexture(const std::string& fileName, const GLuint program, const std::string& name);
 		};
 	}
 }

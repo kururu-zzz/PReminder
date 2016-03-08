@@ -21,6 +21,6 @@ struct AAssetManager;
 
 namespace ndk
 {
-	const char* loadAssetFile(AAssetManager* assetManager, pthread_mutex_t* mutex , const char* fileName);
+	const char* LoadAssetFile(AAssetManager* assetManager, pthread_mutex_t* mutex , const char* fileName);
 }
 #endif
