@@ -1,5 +1,5 @@
-#ifndef LOADASSET
-#define LOADASSET
+#ifndef DEVICEINFO
+#define DEVICEINFO
 
 #ifdef __APPLE__
 #define GLM_FORCE_PURE
@@ -17,10 +17,16 @@
 #include <pthread.h>
 #endif
 
-struct AAssetManager;
-
-namespace ndk
+namespace device
 {
-	void* LoadAssetFile(AAssetManager* assetManager, pthread_mutex_t* mutex , const char* fileName);
+	namespace info
+	{
+		void SetWindowSize(unsigned int width,unsigned int height);
+		/**
+		* @brief デバイスのウィンドウサイズを取得
+		* @return x:ウィンドウの幅,y:ウィンドウの高さ
+		*/
+		const glm::vec2& GetWindowSize();
+	}
 }
 #endif

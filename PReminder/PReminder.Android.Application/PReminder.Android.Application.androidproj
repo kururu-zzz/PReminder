@@ -113,9 +113,12 @@
   <ItemGroup>
     <Content Include="assets\shader\test.frag" />
     <Content Include="assets\shader\test.vert" />
-    <Content Include="assets\texture\test.png" />
-    <Content Include="assets\texture\test2.png" />
-    <Content Include="assets\texture\test3.png" />
+    <Content Include="assets\texture\nazuna1.png" />
+    <Content Include="assets\texture\nazuna2.png" />
+    <Content Include="assets\texture\nazuna3.png" />
+    <Content Include="assets\texture\yamada1.png" />
+    <Content Include="assets\texture\yamada2.png" />
+    <Content Include="assets\texture\yamada3.png" />
     <Content Include="res\values\strings.xml" />
     <AntBuildXml Include="build.xml" />
     <AndroidManifest Include="AndroidManifest.xml" />

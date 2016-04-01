@@ -207,14 +207,13 @@ namespace gl
 			};
 			
 			glUseProgram(program);
-			gl::manager::Texture::Get()->SetTexture(this->fileName, program, "uniform_texture");
+			gl::manager::Texture::Get()->SetTexture(this->fileName);
 			glVertexAttribPointer(gvPositionHandle, 3, GL_FLOAT, false, 0, vertices.data());
 			glVertexAttribPointer(gvUVHandle, 2, GL_FLOAT, false, 0, uvs.data());
 			glEnableVertexAttribArray(gvPositionHandle);
 			glEnableVertexAttribArray(gvUVHandle);
 			glUniformMatrix4fv(viewportHandle, 1, false, &(viewportMatrix[0][0]));
-			//UpdateVertex(vertexList, deviceContext);
-
+			
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		}
 	}

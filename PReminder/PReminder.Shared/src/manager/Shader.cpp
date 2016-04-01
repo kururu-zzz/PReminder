@@ -7,7 +7,8 @@ namespace gl
 	namespace manager
 	{
 		GLuint CompileShader(AAssetManager* assetManager, pthread_mutex_t* mutex, GLenum shaderType, const std::string& fileName) {
-			auto resource = ndk::LoadAssetFile(assetManager, mutex, fileName.c_str());
+			void* data = ndk::LoadAssetFile(assetManager, mutex, fileName.c_str());
+			const char* resource = (char*)data;
 			GLuint shader = glCreateShader(shaderType);
 			glShaderSource(shader, 1, &resource, 0);
 			glCompileShader(shader);
@@ -27,7 +28,7 @@ namespace gl
 
 				throw std::runtime_error(errorMessage.c_str());
 			}
-			//free(resource);
+			free(data);
 			return shader;
 		}
 		Shader::Shader()

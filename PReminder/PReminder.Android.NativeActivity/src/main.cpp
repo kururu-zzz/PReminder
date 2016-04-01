@@ -16,9 +16,10 @@
 */
 #include <pthread.h>
 #include "core/android_native_app_glue.h"
-#include "../../PReminder.Shared/src/object/Sprite.h"
+#include "../../PReminder.Shared/src/sequence/Sequence.h"
 #include "../../PReminder.Shared/src/manager/Shader.h"
 #include "../../PReminder.Shared/src/manager/Texture.h"
+#include "../../PReminder.Shared/src/utility/DeviceInfo.h"
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "PReminder.NativeActivity", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "PReminder.NativeActivity", __VA_ARGS__))
@@ -50,7 +51,7 @@ struct engine {
 	int32_t height;
 	struct saved_state state;
 
-	std::shared_ptr<gl::object::Sprite> sprite;
+	std::shared_ptr<SequenceManager> sequenceManager;
 };
 
 /**
@@ -117,14 +118,14 @@ static int engine_init_display(struct engine* engine) {
 	engine->width = w;
 	engine->height = h;
 	engine->state.angle = 0;
+	device::info::SetWindowSize(w, h);
 
 	gl::manager::Shader::Get()->Init (engine->app->activity->assetManager, &engine->app->mutex);
 	gl::manager::Texture::Get()->Init(engine->app->activity->assetManager, &engine->app->mutex);
 
-	if (!engine->sprite)
+	if (!engine->sequenceManager)
 	{
-		engine->sprite = std::make_shared<gl::object::Sprite>();
-		engine->sprite->Init(glm::vec3(0.f, 0.f, 0.f), glm::vec2(500.f, 900.f), glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/test.png");
+		engine->sequenceManager = std::make_shared<SequenceManager>();
 	}
 
 	return 0;
@@ -140,8 +141,7 @@ static void engine_draw_frame(struct engine* engine) {
 	}
 	glClearColor(0.f, 1.f, 0.f, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	engine->sprite->Draw();
-	//engine->sprite->ChangeImage("texture/test2.png");
+	engine->sequenceManager->Draw();
 	eglSwapBuffers(engine->display, engine->surface);
 }
 
@@ -281,10 +281,6 @@ void android_main(struct android_app* state) {
 							event.acceleration.x, event.acceleration.y,
 							event.acceleration.z);
 					}
-					if ((int)event.acceleration.x >= 0)
-						engine.sprite->ChangeImage("texture/test.png");
-					else
-						engine.sprite->ChangeImage("texture/test3.png");
 				}
 			}
 
@@ -294,14 +290,16 @@ void android_main(struct android_app* state) {
 				return;
 			}
 		}
-
 		if (engine.animating) {
 			// イベントが完了したら次のアニメーション フレームを描画します。
 			engine.state.angle += .01f;
 			if (engine.state.angle > 1) {
 				engine.state.angle = 0;
 			}
-
+			if (engine.sequenceManager)
+			{
+				engine.sequenceManager->Update();
+			}
 			// 描画は画面の更新レートに合わせて調整されているため、
 			// ここで時間調整をする必要はありません。
 			engine_draw_frame(&engine);

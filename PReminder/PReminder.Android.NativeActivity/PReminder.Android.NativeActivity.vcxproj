@@ -154,6 +154,7 @@
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <ExceptionHandling>Enabled</ExceptionHandling>
       <AdditionalIncludeDirectories>include;$(Sysroot)\usr\include;$(StlIncludeDirectories)%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv2;EGL;m</LibraryDependencies>

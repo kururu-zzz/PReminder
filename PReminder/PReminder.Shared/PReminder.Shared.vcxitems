@@ -19,6 +19,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Camera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Sprite.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\sequence\MainScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\sequence\Sequence.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\sequence\Title.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.h" />
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +30,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Texture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Camera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Sprite.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\sequence\MainScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\sequence\Sequence.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\sequence\Title.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.cpp" />
   </ItemGroup>
 </Project>

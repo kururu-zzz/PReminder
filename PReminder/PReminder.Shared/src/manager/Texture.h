@@ -31,7 +31,7 @@ namespace gl
 			/**
 			* @brief テクスチャの作成、コンテナに登録
 			*/
-			void SetTexture(const std::string& fileName, const GLuint program, const std::string& name);
+			void SetTexture(const std::string& fileName);
 		};
 	}
 }

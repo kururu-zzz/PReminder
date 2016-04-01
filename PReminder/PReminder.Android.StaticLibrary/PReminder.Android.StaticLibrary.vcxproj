@@ -193,6 +193,7 @@
       <ExceptionHandling>Enabled</ExceptionHandling>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <CustomBuildStep>
       <Inputs>%(Inputs)</Inputs>
@@ -202,6 +203,7 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <Lib />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>

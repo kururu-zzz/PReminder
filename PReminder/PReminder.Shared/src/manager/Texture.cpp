@@ -96,7 +96,8 @@ namespace gl
 				return;
 			}
 
-			const auto data = ndk::LoadAssetFile(assetManager,mutex,fileName.c_str());
+			auto asset = ndk::LoadAssetFile(assetManager,mutex,fileName.c_str());
+			const char* data = static_cast<char*>(asset);
 
 			png_set_read_fn(png, nullptr, png_read);
 			png_init_io(png, (png_FILE_p)&data);
@@ -122,6 +123,8 @@ namespace gl
 			textureData->height = height;
 			textureData->index = CreateTextureId(buffer, width, height, isAlpha);
 
+			free(asset);
+
 			png_destroy_read_struct(&png, &info, NULL);
 		}
 		void Texture::CreateTexture(const std::string& fileName)
@@ -136,7 +139,7 @@ namespace gl
 			}
 		}
 
-		void Texture::SetTexture(const std::string& fileName,const GLuint program,const std::string& name)
+		void Texture::SetTexture(const std::string& fileName)
 		{
 			glBindTexture(GL_TEXTURE_2D, textureContainer.at(fileName)->index);
 			assert(glGetError() == GL_NO_ERROR);
