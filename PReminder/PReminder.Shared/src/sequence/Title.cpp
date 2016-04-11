@@ -30,7 +30,8 @@ bool Title::Update(std::unordered_map<std::string, std::shared_ptr<Sequence>>* s
 {
 	sequenceState = Sequence::State::active;
 	time++;
-	if (time > 180)
+	if (device::event::IsJustEvent(device::AndroidEvent::Touch) && 
+		(device::event::GetTouchPosition().y < device::info::GetWindowSize().y / 2))
 	{
 		EmplaceSequence<MainScene>(sequenceContainer);
 		sequenceContainer->at(typeid(MainScene).name())->Init(this->GetSequenceName());

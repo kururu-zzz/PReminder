@@ -30,7 +30,7 @@ bool MainScene::Update(std::unordered_map<std::string, std::shared_ptr<Sequence>
 {
 	sequenceState = State::active;
 	time++;
-	if (time > 180)
+	if (device::event::IsEvent(device::AndroidEvent::DoubleTouch))
 	{
 		EmplaceSequence<Title>(sequenceContainer);
 		sequenceContainer->at(typeid(Title).name())->Init(this->GetSequenceName());

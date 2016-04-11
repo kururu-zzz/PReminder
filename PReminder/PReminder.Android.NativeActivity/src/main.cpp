@@ -170,9 +170,28 @@ static void engine_term_display(struct engine* engine) {
 */
 static int32_t engine_handle_input(struct android_app* app, AInputEvent* event) {
 	struct engine* engine = (struct engine*)app->userData;
-	if (AInputEvent_getType(event) == AINPUT_EVENT_TYPE_MOTION) {
-		engine->state.x = AMotionEvent_getX(event, 0);
-		engine->state.y = AMotionEvent_getY(event, 0);
+	auto action = AMotionEvent_getAction(event) & AMOTION_EVENT_ACTION_MASK;
+	if (AInputEvent_getType(event) == AINPUT_EVENT_TYPE_MOTION)
+	{
+		if (action == AKEY_EVENT_ACTION_DOWN)
+		{
+			engine->state.x = AMotionEvent_getX(event, 0);
+			engine->state.y = AMotionEvent_getY(event, 0);
+			device::event::SetTouchPosition(engine->state.x, engine->state.y);
+			device::event::SetEvent(device::AndroidEvent::Touch);
+		}
+		if (action == AMOTION_EVENT_ACTION_MOVE)
+		{
+			engine->state.x = AMotionEvent_getX(event, 0);
+			engine->state.y = AMotionEvent_getY(event, 0);
+			device::event::SetEvent(device::AndroidEvent::Move);
+		}
+		if (action == AMOTION_EVENT_ACTION_POINTER_DOWN)
+		{
+			engine->state.x = AMotionEvent_getX(event, 0);
+			engine->state.y = AMotionEvent_getY(event, 0);
+			device::event::SetEvent(device::AndroidEvent::DoubleTouch);
+		}
 		return 1;
 	}
 	return 0;
@@ -259,13 +278,11 @@ void android_main(struct android_app* state) {
 		int ident;
 		int events;
 		struct android_poll_source* source;
-
 		// アニメーションしない場合、無期限にブロックしてイベントが発生するのを待ちます。
 		// アニメーションする場合、すべてのイベントが読み取られるまでループしてから続行します
 		// アニメーションの次のフレームを描画します。
 		while ((ident = ALooper_pollAll(engine.animating ? 0 : -1, NULL, &events,
 			(void**)&source)) >= 0) {
-
 			// このイベントを処理します。
 			if (source != NULL) {
 				source->process(state, source);
@@ -300,6 +317,7 @@ void android_main(struct android_app* state) {
 			{
 				engine.sequenceManager->Update();
 			}
+			device::event::Update();
 			// 描画は画面の更新レートに合わせて調整されているため、
 			// ここで時間調整をする必要はありません。
 			engine_draw_frame(&engine);
