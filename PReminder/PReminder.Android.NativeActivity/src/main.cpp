@@ -16,7 +16,7 @@
 */
 #include <pthread.h>
 #include "core/android_native_app_glue.h"
-#include "../../PReminder.Shared/src/sequence/Sequence.h"
+#include "sequence/Sequence.h"
 #include "../../PReminder.Shared/src/manager/Shader.h"
 #include "../../PReminder.Shared/src/manager/Texture.h"
 #include "../../PReminder.Shared/src/utility/DeviceInfo.h"

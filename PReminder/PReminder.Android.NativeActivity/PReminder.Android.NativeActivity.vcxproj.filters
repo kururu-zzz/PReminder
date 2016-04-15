@@ -4,16 +4,46 @@
     <ClInclude Include="src\core\android_native_app_glue.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="src\sequence\Title.h">
+      <Filter>sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sequence\Sequence.h">
+      <Filter>sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sequence\MainScene.h">
+      <Filter>sequence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\Player.h">
+      <Filter>object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\core\android_native_app_glue.c">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="src\sequence\Title.cpp">
+      <Filter>sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sequence\Sequence.cpp">
+      <Filter>sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sequence\MainScene.cpp">
+      <Filter>sequence</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\Player.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="core">
       <UniqueIdentifier>{41fe51a0-bd3e-486b-a1a7-4a5a43d3a69c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sequence">
+      <UniqueIdentifier>{fe72d3df-1d98-44db-a246-106982ae56b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object">
+      <UniqueIdentifier>{f176bc88-c2c6-46cd-ae9c-a855618bc5b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

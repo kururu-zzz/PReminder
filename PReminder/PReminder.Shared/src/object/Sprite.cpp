@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "../manager/Shader.h"
 #include "../manager/Texture.h"
+#include "../utility/DeviceInfo.h"
 
 namespace gl
 {
@@ -173,14 +174,14 @@ namespace gl
 			auto shaderManager = manager::Shader::Get();
 			auto program = shaderManager->CreateProgram(
 				"sprite", 
-				shaderManager->CreateShader(GL_VERTEX_SHADER, "sprite", "shader/test.vert"),
-				shaderManager->CreateShader(GL_FRAGMENT_SHADER, "sprite", "shader/test.frag"));
+				shaderManager->CreateShader(GL_VERTEX_SHADER, "sprite", "shader/sprite.vert"),
+				shaderManager->CreateShader(GL_FRAGMENT_SHADER, "sprite", "shader/sprite.frag"));
 
 			GLuint gvPositionHandle = glGetAttribLocation(program, "position");
 			GLuint gvUVHandle = glGetAttribLocation(program, "attr_uv");
-			glm::mat4x4 viewportMatrix = glm::mat4x4();
-			viewportMatrix[0][0] = 2.f / 720.f;
-			viewportMatrix[1][1] = -2.0f / 1184.f;
+			static glm::mat4x4 viewportMatrix = glm::mat4x4();
+			viewportMatrix[0][0] = 2.f / device::info::GetWindowSize().x;
+			viewportMatrix[1][1] = -2.0f / device::info::GetWindowSize().y;
 			viewportMatrix[3][0] = -1.f;
 			viewportMatrix[3][1] = 1.0f;
 			GLuint viewportHandle = glGetUniformLocation(program, "viewportMatrix");
@@ -207,6 +208,8 @@ namespace gl
 			};
 			
 			glUseProgram(program);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			gl::manager::Texture::Get()->SetTexture(this->fileName);
 			glVertexAttribPointer(gvPositionHandle, 3, GL_FLOAT, false, 0, vertices.data());
 			glVertexAttribPointer(gvUVHandle, 2, GL_FLOAT, false, 0, uvs.data());

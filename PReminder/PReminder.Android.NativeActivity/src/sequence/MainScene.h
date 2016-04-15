@@ -3,10 +3,13 @@
 
 #include "Sequence.h"
 
+class Player;
+
 class MainScene : public Sequence
 {
 private:
-	int time = 0;//シーン遷移演出時間の管理用変数
+	int time = 0;
+	std::shared_ptr<Player> player;
 public:
 	MainScene();
 	void Init(const std::string& beforeSequenceName);

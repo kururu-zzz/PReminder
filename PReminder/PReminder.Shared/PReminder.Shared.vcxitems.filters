@@ -19,17 +19,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Singleton.h">
       <Filter>manager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\sequence\Sequence.h">
-      <Filter>sequence</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\sequence\Title.h">
-      <Filter>sequence</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.h">
       <Filter>utility</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\sequence\MainScene.h">
-      <Filter>sequence</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,9 +32,6 @@
     </Filter>
     <Filter Include="manager">
       <UniqueIdentifier>{b12f114c-b692-4c91-8503-256c110922ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="sequence">
-      <UniqueIdentifier>{2fcc1fb7-bb83-48e1-8ffc-e658e13e0b5c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,17 +50,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Shader.cpp">
       <Filter>manager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\sequence\Title.cpp">
-      <Filter>sequence</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\sequence\Sequence.cpp">
-      <Filter>sequence</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.cpp">
       <Filter>utility</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\sequence\MainScene.cpp">
-      <Filter>sequence</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,16 +1,17 @@
 #include "MainScene.h"
 #include "Title.h"
-#include "../object/Sprite.h"
-#include "../utility/DeviceInfo.h"
+#include "../../PReminder.Shared/src/object/Sprite.h"
+#include "../../PReminder.Shared/src/utility/DeviceInfo.h"
 #include <future>
+
+#include "../object/Player.h"
 
 static std::mutex mutex;
 
 MainScene::MainScene() : Sequence(typeid(MainScene).name())
 {
-	imageMap.emplace("image0", std::make_shared<gl::object::Sprite>());
-	imageMap.emplace("image1", std::make_shared<gl::object::Sprite>());
-	imageMap.emplace("image2", std::make_shared<gl::object::Sprite>());
+	imageMap.emplace("back", std::make_shared<gl::object::Sprite>());
+	player = std::make_shared<Player>();
 }
 
 void MainScene::Init(const std::string& beforeSequenceName){
@@ -18,10 +19,12 @@ void MainScene::Init(const std::string& beforeSequenceName){
 
 	sequenceState = State::active;
 
+	player->Init();
+
+	time = 0;
+
 	auto windowSize = device::info::GetWindowSize();
-	imageMap.at("image0")->Init(glm::vec3(0.f, 0.f, 0.f), glm::vec2(windowSize.x,windowSize.y / 3.f), glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/yamada1.png");
-	imageMap.at("image1")->Init(glm::vec3(0.f, windowSize.y / 3.f, 0.f), glm::vec2(windowSize.x, windowSize.y / 3.f), glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/yamada2.png");
-	imageMap.at("image2")->Init(glm::vec3(0.f, windowSize.y * 2 / 3.f, 0.f), glm::vec2(windowSize.x, windowSize.y / 3.f), glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/yamada3.png");
+	imageMap.at("back")->Init(glm::vec3(0.f, 0.f, 1.f), windowSize, glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/sky.png");
 
 	this->beforeSequenceName = beforeSequenceName;
 }
@@ -29,13 +32,13 @@ void MainScene::Init(const std::string& beforeSequenceName){
 bool MainScene::Update(std::unordered_map<std::string, std::shared_ptr<Sequence>>* sequenceContainer)
 {
 	sequenceState = State::active;
-	time++;
+	player->Update();
+
 	if (device::event::IsEvent(device::AndroidEvent::DoubleTouch))
 	{
 		EmplaceSequence<Title>(sequenceContainer);
 		sequenceContainer->at(typeid(Title).name())->Init(this->GetSequenceName());
 		sequenceState = Sequence::State::wait;
-		time = 0;
 	}
 	return true;
 }
@@ -46,5 +49,6 @@ void MainScene::Draw()
 	{
 		image.second->Draw();
 	}
+	player->Draw();
 }
 
