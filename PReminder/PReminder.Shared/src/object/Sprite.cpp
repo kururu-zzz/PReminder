@@ -11,24 +11,28 @@ namespace gl
 	{
 		void SetVertexPos(std::array<std::shared_ptr<Vertex::DefaultVertex>, 4>& vertexList, glm::vec3 pos, glm::vec2 base, glm::vec2 size, float degree)
 		{
-			vertexList[0]->pos = glm::vec3(pos.x, pos.y, pos.z);
+			/*vertexList[0]->pos = glm::vec3(pos.x, pos.y, pos.z);
 			vertexList[1]->pos = glm::vec3(pos.x + size.x, pos.y, pos.z);
 			vertexList[2]->pos = glm::vec3(pos.x, pos.y + size.y, pos.z);
-			vertexList[3]->pos = glm::vec3(pos.x + size.x, pos.y + size.y, pos.z);
-			std::for_each(vertexList.begin(), vertexList.end(), [base](std::shared_ptr<Vertex::DefaultVertex>& vertex)
-			{
-				vertex->pos = vertex->pos - glm::vec3(base.x, base.y, 0.f);
-			});
+			vertexList[3]->pos = glm::vec3(pos.x + size.x, pos.y + size.y, pos.z);*/
+			auto harfSize = size / 2.f;
+			vertexList[0]->pos = glm::vec3(-harfSize.x, -harfSize.y, 0.f);
+			vertexList[1]->pos = glm::vec3( harfSize.x, -harfSize.y, 0.f);
+			vertexList[2]->pos = glm::vec3(-harfSize.x,  harfSize.y, 0.f);
+			vertexList[3]->pos = glm::vec3( harfSize.x,  harfSize.y, 0.f);
 			glm::mat3x3 matRotate;
 
 			float rad = glm::radians(degree);
 			matRotate[0][0] = matRotate[1][1] = glm::cos(rad);
 			matRotate[0][1] = glm::sin(rad);
 			matRotate[1][0] = -glm::sin(rad);
-			std::for_each(vertexList.begin(), vertexList.end(), [base, matRotate](std::shared_ptr<Vertex::DefaultVertex>& vertex)
+
+			std::for_each(vertexList.begin(), vertexList.end(), [pos, matRotate](std::shared_ptr<Vertex::DefaultVertex>& vertex)
 			{
+				//vertex->pos = vertex->pos - glm::vec3(base.x, base.y, 0.f);
 				vertex->pos = vertex->pos * matRotate;
-				vertex->pos = vertex->pos + glm::vec3(base.x, base.y, 0.f);
+				//vertex->pos = vertex->pos + glm::vec3(base.x, base.y, 0.f);
+				vertex->pos = vertex->pos + pos;
 			});
 		}
 
@@ -80,7 +84,8 @@ namespace gl
 
 			vertexList[0]->color = vertexList[1]->color = vertexList[2]->color = vertexList[3]->color = glm::vec4(1.f, 0.f, 0.f, 1.f);
 
-			this->base = glm::vec2(size.x / 2.f, size.y / 2.f);
+			//this->base = glm::vec2(size.x / 2.f, size.y / 2.f);
+			this->base = glm::vec2(pos.x, pos.y);
 
 			glm::vec3 faceEdgeA = vertexList[1]->pos - vertexList[0]->pos;
 			glm::vec3 faceEdgeB = vertexList[2]->pos - vertexList[0]->pos;
@@ -134,7 +139,7 @@ namespace gl
 		void Sprite::SetRotateFromCenter(const float degree)
 		{
 			this->degree = degree;
-			this->base = glm::vec2(this->pos.x + this->size.x / 2, this->pos.y + this->size.y / 2);
+			//this->base = glm::vec2(this->pos.x + this->size.x / 2, this->pos.y + this->size.y / 2);
 		}
 
 		void Sprite::SetSizeFromCenter(const glm::vec2& size)
@@ -210,6 +215,7 @@ namespace gl
 			glUseProgram(program);
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			if(fileName == "texture/shield.png")glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			gl::manager::Texture::Get()->SetTexture(this->fileName);
 			glVertexAttribPointer(gvPositionHandle, 3, GL_FLOAT, false, 0, vertices.data());
 			glVertexAttribPointer(gvUVHandle, 2, GL_FLOAT, false, 0, uvs.data());

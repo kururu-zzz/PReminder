@@ -24,7 +24,7 @@ void MainScene::Init(const std::string& beforeSequenceName){
 	time = 0;
 
 	auto windowSize = device::info::GetWindowSize();
-	imageMap.at("back")->Init(glm::vec3(0.f, 0.f, 1.f), windowSize, glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/sky.png");
+	imageMap.at("back")->Init(glm::vec3(windowSize.x/2.f,windowSize.y/2.f, 1.f), windowSize, glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/sky.png");
 
 	this->beforeSequenceName = beforeSequenceName;
 }

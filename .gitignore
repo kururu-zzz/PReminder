@@ -211,3 +211,7 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/PReminder/PReminder.Android.NativeActivity/include/glm
+/PReminder/PReminder.Android.Application/include/glm
+/PReminder/PReminder.Android.NativeActivity/include/libpng
+/PReminder/PReminder.Android.Application/include/libpng

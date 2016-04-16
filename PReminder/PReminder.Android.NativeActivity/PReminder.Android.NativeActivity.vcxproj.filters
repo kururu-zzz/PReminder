@@ -16,6 +16,12 @@
     <ClInclude Include="src\object\Player.h">
       <Filter>object</Filter>
     </ClInclude>
+    <ClInclude Include="src\object\Shield.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\NormalShot.h">
+      <Filter>object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -32,6 +38,12 @@
       <Filter>sequence</Filter>
     </ClCompile>
     <ClCompile Include="src\object\Player.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\Shield.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\NormalShot.cpp">
       <Filter>object</Filter>
     </ClCompile>
   </ItemGroup>

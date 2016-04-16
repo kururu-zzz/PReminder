@@ -1,7 +1,6 @@
-#ifndef PLAYER
-#define PLAYER
+#ifndef SHIELD
+#define SHIELD
 
-#include <vector>
 #include <memory>
 
 namespace gl
@@ -12,17 +11,13 @@ namespace gl
 	}
 }
 
-class Shield;
-class NormalShot;
-
-class Player
+class Shield
 {
 	std::shared_ptr<gl::object::Sprite> sprite;
-	std::shared_ptr<Shield> shield;
-	std::vector<std::shared_ptr<NormalShot>> shots;
 	float degree;
+	const float radius = 200.f;
 public:
-	Player();
+	Shield();
 	void Init();
 	void Update();
 	void Draw();

@@ -116,6 +116,8 @@
     <Content Include="assets\texture\nazuna1.png" />
     <Content Include="assets\texture\nazuna2.png" />
     <Content Include="assets\texture\nazuna3.png" />
+    <Content Include="assets\texture\normalShot.png" />
+    <Content Include="assets\texture\shield.png" />
     <Content Include="assets\texture\sky.png" />
     <Content Include="assets\texture\title.png" />
     <Content Include="assets\texture\unit.png" />

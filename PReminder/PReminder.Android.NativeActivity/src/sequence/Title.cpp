@@ -17,7 +17,7 @@ void Title::Init(const std::string& beforeSequenceName){
 	sequenceState = Sequence::State::active;
 
 	auto windowSize = device::info::GetWindowSize();
-	imageMap.at("title")->Init(glm::vec3(0.f, 0.f, 0.f), windowSize, glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/title.png");
+	imageMap.at("title")->Init(glm::vec3(windowSize.x/2.f,windowSize.y/2.f, 0.f), windowSize, glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/title.png");
 
 	this->beforeSequenceName = beforeSequenceName;
 }
@@ -26,8 +26,7 @@ bool Title::Update(std::unordered_map<std::string, std::shared_ptr<Sequence>>* s
 {
 	sequenceState = Sequence::State::active;
 	time++;
-	if (device::event::IsJustEvent(device::AndroidEvent::Touch) && 
-		(device::event::GetTouchPosition().y < device::info::GetWindowSize().y / 2))
+	if (device::event::IsJustEvent(device::AndroidEvent::Touch))
 	{
 		EmplaceSequence<MainScene>(sequenceContainer);
 		sequenceContainer->at(typeid(MainScene).name())->Init(this->GetSequenceName());

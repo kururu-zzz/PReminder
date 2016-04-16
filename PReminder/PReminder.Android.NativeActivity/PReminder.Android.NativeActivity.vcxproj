@@ -228,7 +228,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\core\android_native_app_glue.h" />
+    <ClInclude Include="src\object\NormalShot.h" />
     <ClInclude Include="src\object\Player.h" />
+    <ClInclude Include="src\object\Shield.h" />
     <ClInclude Include="src\sequence\MainScene.h" />
     <ClInclude Include="src\sequence\Sequence.h" />
     <ClInclude Include="src\sequence\Title.h" />
@@ -241,7 +243,9 @@
   <ItemGroup>
     <ClCompile Include="src\core\android_native_app_glue.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\object\NormalShot.cpp" />
     <ClCompile Include="src\object\Player.cpp" />
+    <ClCompile Include="src\object\Shield.cpp" />
     <ClCompile Include="src\sequence\MainScene.cpp" />
     <ClCompile Include="src\sequence\Sequence.cpp" />
     <ClCompile Include="src\sequence\Title.cpp" />
