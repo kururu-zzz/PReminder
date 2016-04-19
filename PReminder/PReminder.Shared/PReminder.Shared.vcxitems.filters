@@ -22,6 +22,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.h">
       <Filter>utility</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Font.h">
+      <Filter>object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="object">
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.cpp">
       <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Font.cpp">
+      <Filter>object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

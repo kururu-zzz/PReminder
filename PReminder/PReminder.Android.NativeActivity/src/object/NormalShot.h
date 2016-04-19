@@ -1,25 +1,18 @@
 #ifndef NORMALSHOT
 #define NORMALSHOT
 
-#include <memory>
+#include "Shot.h"
 
-namespace gl
+namespace GameObject
 {
-	namespace object
+	class NormalShot : public Shot
 	{
-		class Sprite;
-	}
+	public:
+		NormalShot(const float& playerAngle);
+		void Init();
+		void Update(std::vector<std::shared_ptr<Character>>* targets);
+		void Draw();
+	};
 }
-
-class NormalShot
-{
-	std::shared_ptr<gl::object::Sprite> sprite;
-	float degree = 0;
-public:
-	NormalShot(const float& playerAngle);
-	void Init();
-	void Update();
-	void Draw();
-};
 
 #endif

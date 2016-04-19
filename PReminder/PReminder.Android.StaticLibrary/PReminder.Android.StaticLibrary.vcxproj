@@ -196,7 +196,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <CustomBuildStep>
-      <Inputs>%(Inputs)</Inputs>
+      <Inputs>../PReminder.Shared/lib/debug/freetyped.a;%(Inputs)</Inputs>
     </CustomBuildStep>
     <Lib />
     <PreBuildEvent>

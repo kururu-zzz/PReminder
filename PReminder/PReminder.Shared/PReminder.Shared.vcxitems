@@ -18,6 +18,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Shader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\manager\Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Camera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Font.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\object\Sprite.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.h" />
@@ -26,6 +27,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Shader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\manager\Texture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Camera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Font.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\object\Sprite.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\DeviceInfo.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utility\LoadAsset.cpp" />

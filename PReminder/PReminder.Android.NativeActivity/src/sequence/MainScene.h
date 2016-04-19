@@ -3,13 +3,16 @@
 
 #include "Sequence.h"
 
-class Player;
-
+namespace GameObject
+{
+	class Character;
+}
 class MainScene : public Sequence
 {
 private:
 	int time = 0;
-	std::shared_ptr<Player> player;
+	std::vector<std::shared_ptr<GameObject::Character>> players;
+	std::vector<std::shared_ptr<GameObject::Character>> enemys;
 public:
 	MainScene();
 	void Init(const std::string& beforeSequenceName);

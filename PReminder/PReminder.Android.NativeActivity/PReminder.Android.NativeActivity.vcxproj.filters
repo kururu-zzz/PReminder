@@ -19,6 +19,15 @@
     <ClInclude Include="src\object\Shield.h">
       <Filter>object</Filter>
     </ClInclude>
+    <ClInclude Include="src\object\Enemy.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\Character.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\object\Shot.h">
+      <Filter>object</Filter>
+    </ClInclude>
     <ClInclude Include="src\object\NormalShot.h">
       <Filter>object</Filter>
     </ClInclude>
@@ -41,6 +50,15 @@
       <Filter>object</Filter>
     </ClCompile>
     <ClCompile Include="src\object\Shield.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\Enemy.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\Character.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\object\Shot.cpp">
       <Filter>object</Filter>
     </ClCompile>
     <ClCompile Include="src\object\NormalShot.cpp">

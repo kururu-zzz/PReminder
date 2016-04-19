@@ -11,16 +11,18 @@ namespace gl
 	}
 }
 
-class Shield
+namespace GameObject
 {
-	std::shared_ptr<gl::object::Sprite> sprite;
-	float degree;
-	const float radius = 200.f;
-public:
-	Shield();
-	void Init();
-	void Update();
-	void Draw();
-};
-
+	class Shield
+	{
+		std::shared_ptr<gl::object::Sprite> sprite;
+		float degree;
+		const float radius = 200.f;
+	public:
+		Shield();
+		void Init();
+		void Update();
+		void Draw();
+	};
+}
 #endif

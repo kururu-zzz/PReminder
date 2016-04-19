@@ -1,31 +1,20 @@
 #ifndef PLAYER
 #define PLAYER
 
-#include <vector>
-#include <memory>
+#include "Character.h"
 
-namespace gl
+namespace GameObject
 {
-	namespace object
+	class Shield;
+	class Player : public Character
 	{
-		class Sprite;
-	}
+		std::shared_ptr<gl::object::Sprite> targetMarker;
+		std::shared_ptr<Shield> shield;
+	public:
+		Player();
+		void Init();
+		void Update(std::vector<std::shared_ptr<Character>>* targets);
+		void Draw();
+	};
 }
-
-class Shield;
-class NormalShot;
-
-class Player
-{
-	std::shared_ptr<gl::object::Sprite> sprite;
-	std::shared_ptr<Shield> shield;
-	std::vector<std::shared_ptr<NormalShot>> shots;
-	float degree;
-public:
-	Player();
-	void Init();
-	void Update();
-	void Draw();
-};
-
 #endif

@@ -49,6 +49,7 @@ namespace gl
 			/**
 			* @brief スプライトの初期化
 			* @param pos:初期位置(スクリーン座標)
+			* @param base:回転や位置の基準点(x,y座標を0～1で指定)
 			* @param size:初期サイズ
 			* @param uv:設定するUV値
 			* @param fileName:読み込むテクスチャのパス
@@ -60,6 +61,7 @@ namespace gl
 			*/
 			void Init(
 				const glm::vec3& pos,
+				const glm::vec2& base,
 				const glm::vec2& size,
 				const glm::vec4& uv,
 				const std::string& fileName);
@@ -113,7 +115,7 @@ namespace gl
 			* @brief スプライトの回転角を画像中心で設定
 			* @param degree:設定する角度
 			*/
-			void SetRotateFromCenter(const float degree);
+			//void SetRotateFromCenter(const float degree);
 
 			/**
 			* @brief スプライトのUV値を設定

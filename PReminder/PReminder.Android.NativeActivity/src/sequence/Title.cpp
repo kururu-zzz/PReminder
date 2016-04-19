@@ -1,7 +1,7 @@
 #include "Title.h"
 #include "MainScene.h"
-#include "../../PReminder.Shared/src/object/Sprite.h"
-#include "../../PReminder.Shared/src/utility/DeviceInfo.h"
+#include "../../../PReminder.Shared/src/object/Sprite.h"
+#include "../../../PReminder.Shared/src/utility/DeviceInfo.h"
 #include <future>
 
 static std::mutex mutex;
@@ -17,7 +17,7 @@ void Title::Init(const std::string& beforeSequenceName){
 	sequenceState = Sequence::State::active;
 
 	auto windowSize = device::info::GetWindowSize();
-	imageMap.at("title")->Init(glm::vec3(windowSize.x/2.f,windowSize.y/2.f, 0.f), windowSize, glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/title.png");
+	imageMap.at("title")->Init(glm::vec3(0.f, 0.f, 0.f), glm::vec2(0.f, 0.f), windowSize, glm::vec4(0.f, 0.f, 1.f, 1.f), "texture/title.png");
 
 	this->beforeSequenceName = beforeSequenceName;
 }
