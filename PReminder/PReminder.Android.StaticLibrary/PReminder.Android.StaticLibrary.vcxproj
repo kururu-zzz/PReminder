@@ -63,6 +63,11 @@
     <ClCompile Include="libpng\jni\pngwtran.c" />
     <ClCompile Include="libpng\jni\pngwutil.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\freetype\freetype.vcxproj">
+      <Project>{da6c0384-3a8b-49b9-9305-79e3685cd0b8}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3059826c-6a2f-4675-ac39-873d2cccb1f2}</ProjectGuid>
     <Keyword>Android</Keyword>
@@ -196,7 +201,7 @@
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <CustomBuildStep>
-      <Inputs>../PReminder.Shared/lib/debug/freetyped.a;%(Inputs)</Inputs>
+      <Inputs>%(Inputs)</Inputs>
     </CustomBuildStep>
     <Lib />
     <PreBuildEvent>

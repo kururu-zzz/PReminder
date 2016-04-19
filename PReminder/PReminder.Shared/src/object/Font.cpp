@@ -18,6 +18,7 @@ namespace gl
 
 			if (FT_Init_FreeType(&ft)) {
 				fprintf(stderr, "Could not init freetype library\n");
+				std::exception();
 			}
 
 			FT_Face face;

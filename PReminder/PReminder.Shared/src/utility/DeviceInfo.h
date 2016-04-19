@@ -9,8 +9,8 @@
 #include <OpenGLES/ES2/gl.h>
 #else
 #define GLM_FORCE_PURE
-#include <GLES2/gl2.h>
 #include <glm/glm.hpp>
+#include <GLES2/gl2.h>
 #include <array>
 #include <string>
 #include <memory>
