@@ -58,7 +58,7 @@ namespace gl
 			}
 		}
 
-		GLuint CreateTextureId(uint8_t* data,const unsigned int width,const unsigned int height,bool isAlpha)
+		GLuint CreateTextureId(uint8_t* data,const unsigned int width,const unsigned int height,int format)
 		{
 			// テクスチャの生成を行う
 			GLuint textureId;
@@ -76,28 +76,25 @@ namespace gl
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB + isAlpha, width, height, 0, GL_RGB + isAlpha, GL_UNSIGNED_BYTE, data);
+			glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 			assert(glGetError() == GL_NO_ERROR);
 			return textureId;
 		}
 
-		void CreateTextureData(TextureData* textureData ,AAssetManager* assetManager, pthread_mutex_t* mutex, const std::string& fileName)
+		void CreateTextureData(TextureData* textureData,const char* data)
 		{
 			png_structp png = png_create_read_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
 			if (png == nullptr) 
 			{
-				throw std::runtime_error("png_create_read_struct error:fileName=" + fileName);
+				throw std::runtime_error("png_create_read_struct error");
 				return;
 			}
 			png_infop info = png_create_info_struct(png);
 			if (info == nullptr)
 			{
-				throw std::runtime_error("png_create_info_struct error:fileName=" + fileName);
+				throw std::runtime_error("png_create_info_struct error");
 				return;
 			}
-
-			auto asset = ndk::LoadAssetFile(assetManager,mutex,fileName.c_str());
-			const char* data = static_cast<char*>(asset);
 
 			png_set_read_fn(png, nullptr, png_read);
 			png_init_io(png, (png_FILE_p)&data);
@@ -121,9 +118,7 @@ namespace gl
 
 			textureData->width = width;
 			textureData->height = height;
-			textureData->index = CreateTextureId(buffer, width, height, isAlpha);
-
-			free(asset);
+			textureData->index = CreateTextureId(buffer, width, height,GL_RGB + isAlpha);
 
 			png_destroy_read_struct(&png, &info, NULL);
 		}
@@ -131,18 +126,47 @@ namespace gl
 		{
 			if (textureContainer.find(fileName) == textureContainer.end())
 			{
+				size_t size = 0;
+				auto asset = ndk::LoadAssetFile(fileName.c_str(), &size);
+				const char* data = static_cast<char*>(asset);
+
 				std::shared_ptr<TextureData> textureData = std::make_shared<TextureData>();
 				// 画像ピクセルを読み込む
-				CreateTextureData(textureData.get(), assetManager, mutex, fileName);
+				CreateTextureData(textureData.get(),data);
 
 				textureContainer.emplace(fileName, textureData);
+
+				free(asset);
+			}
+		}
+
+		void Texture::CreateTextureFromMemory(
+			const std::string& keyName,
+			unsigned char* data,
+			unsigned int width,
+			unsigned int height,
+			int format
+		)
+		{
+			if (textureContainer.find(keyName) == textureContainer.end())
+			{
+				std::shared_ptr<TextureData> textureData = std::make_shared<TextureData>();
+				textureData->width = width;
+				textureData->height = height;
+				// 画像ピクセルを読み込む
+				textureData->index = CreateTextureId(data,width,height,format);
+
+				textureContainer.emplace(keyName, textureData);
 			}
 		}
 
 		void Texture::SetTexture(const std::string& fileName)
 		{
-			glBindTexture(GL_TEXTURE_2D, textureContainer.at(fileName)->index);
-			assert(glGetError() == GL_NO_ERROR);
+			if (fileName != "")
+			{
+				glBindTexture(GL_TEXTURE_2D, textureContainer.at(fileName)->index);
+				assert(glGetError() == GL_NO_ERROR);
+			}
 		}
 	}
 }

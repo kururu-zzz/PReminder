@@ -19,3 +19,5 @@ C:\Users\yosyua\documents\visual studio 2015\Projects\PReminder\ARM\Debug\PRemin
 C:\Users\yosyua\documents\visual studio 2015\Projects\PReminder\ARM\Debug\PReminder.lastsuccessfuldeploy
 C:\Users\yosyua\documents\visual studio 2015\Projects\PReminder\PReminder\PReminder.Android.Application\ARM\Debug\FileStringReplace.incremental
 C:\Users\yosyua\documents\visual studio 2015\Projects\PReminder\ARM\Debug\Package\libs\armeabi-v7a\libPReminder.a
+C:\Users\yosyua\documents\visual studio 2015\Projects\PReminder\ARM\Debug\Package\assets\font\meiryo.ttc
+C:\Users\yosyua\documents\visual studio 2015\Projects\PReminder\ARM\Debug\Package\assets\font\meiryob.ttc

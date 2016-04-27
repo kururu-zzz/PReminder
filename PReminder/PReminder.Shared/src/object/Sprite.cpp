@@ -85,8 +85,11 @@ namespace gl
 
 		void Sprite::ChangeImage(const std::string& fileName)
 		{
-			this->fileName = fileName;
-			manager::Texture::Get()->CreateTexture(fileName);
+			if (fileName != "")
+			{
+				this->fileName = fileName;
+				manager::Texture::Get()->CreateTexture(fileName);
+			}
 		}
 
 		void Sprite::SetUV(const glm::vec4& texel) {
@@ -197,7 +200,6 @@ namespace gl
 			glUseProgram(program);
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-			if(fileName == "texture/shield.png")glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 			gl::manager::Texture::Get()->SetTexture(this->fileName);
 			glVertexAttribPointer(gvPositionHandle, 3, GL_FLOAT, false, 0, vertices.data());
 			glVertexAttribPointer(gvUVHandle, 2, GL_FLOAT, false, 0, uvs.data());

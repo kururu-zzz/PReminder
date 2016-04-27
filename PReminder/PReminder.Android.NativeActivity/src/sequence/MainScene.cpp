@@ -42,7 +42,10 @@ void MainScene::Init(const std::string& beforeSequenceName){
 
 	this->beforeSequenceName = beforeSequenceName;
 
-	auto font = std::make_shared<gl::object::Font>();
+	font = std::make_shared<gl::object::Font>();
+	std::string text = "We Should Cut DrawCall For Performance";
+	//std::string text = "rC";
+	font->Init(glm::vec3(0.f, 100.f, 0.f), glm::vec2(0.f, 0.f), glm::vec2(33.f * text.size(), 35.f), glm::vec4(0.f, 0.f, 1.f, 1.f), text);
 }
 
 bool MainScene::Update(std::unordered_map<std::string, std::shared_ptr<Sequence>>* sequenceContainer)
@@ -69,12 +72,13 @@ void MainScene::Draw()
 {
 	for (auto& image : imageMap)
 	{
-		image.second->Draw();
+		//image.second->Draw();
 	}
 	for (auto& enemy : enemys)
 	{
 		enemy->Draw();
 	}
 	players[0]->Draw();
+	font->Draw();
 }
 

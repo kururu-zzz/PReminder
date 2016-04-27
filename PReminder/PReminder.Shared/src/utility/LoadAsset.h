@@ -10,7 +10,7 @@
 #else
 #define GLM_FORCE_PURE
 #include <GLES2/gl2.h>
-#include <include/glm/glm.hpp>
+#include <glm/glm.hpp>
 #include <array>
 #include <string>
 #include <memory>
@@ -21,6 +21,7 @@ struct AAssetManager;
 
 namespace ndk
 {
-	void* LoadAssetFile(AAssetManager* assetManager, pthread_mutex_t* mutex , const char* fileName);
+	void PrepareLoadAsset(AAssetManager* assetManager, pthread_mutex_t* mutex);
+	void* LoadAssetFile(const char* fileName,size_t* size);
 }
 #endif

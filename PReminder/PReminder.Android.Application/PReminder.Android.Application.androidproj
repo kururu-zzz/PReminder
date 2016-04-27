@@ -111,6 +111,8 @@
     </AntPackage>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Content Include="assets\font\meiryo.ttc" />
+    <Content Include="assets\font\meiryob.ttc" />
     <Content Include="assets\shader\sprite.frag" />
     <Content Include="assets\shader\sprite.vert" />
     <Content Include="assets\texture\enemy.png" />

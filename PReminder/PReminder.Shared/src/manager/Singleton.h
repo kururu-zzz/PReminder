@@ -15,8 +15,6 @@ namespace gl
 		template<typename T>
 		class Singleton {
 		protected:
-			AAssetManager* assetManager; ///< engine‚©‚çInit‚ÅŽæ“¾
-			pthread_mutex_t* mutex; ///< engine‚©‚çInit‚ÅŽæ“¾
 		protected:
 			Singleton() {};
 			Singleton(const Singleton& rhs)=delete;
@@ -32,10 +30,8 @@ namespace gl
 			* @param assetManager:engine‚ÌAAssetManager
 			* @param mutex:engine“à‚Ìmutex
 			*/
-			void Init(AAssetManager* assetManager, pthread_mutex_t* mutex)
+			void Init()
 			{
-				this->assetManager = assetManager;
-				this->mutex = mutex;
 			}
 		};
 	}

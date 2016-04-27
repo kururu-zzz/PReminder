@@ -11,6 +11,8 @@
 #define GLM_FORCE_PURE
 #include <GLES2/gl2.h>
 #include <glm/glm.hpp>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 #include <array>
 #include <string>
 #include <memory>
@@ -29,6 +31,9 @@ namespace gl
 		{
 		private:
 			std::shared_ptr<Sprite> sprite;
+			FT_Face face;
+			//std::shared_ptr<FT_FaceRec_> face;
+			std::string text;
 			/*
 			glm::vec3 pos;
 			glm::vec2 size;
@@ -45,7 +50,7 @@ namespace gl
 			* @param base:回転や位置の基準点(x,y座標を0～1で指定)
 			* @param size:初期サイズ
 			* @param uv:設定するUV値
-			* @param fileName:読み込むテクスチャのパス
+			* @param text:初期の文章
 			UVの設定は以下の通り
 			x→左上頂点のu
 			y→左上頂点のv
@@ -57,7 +62,7 @@ namespace gl
 				const glm::vec2& base,
 				const glm::vec2& size,
 				const glm::vec4& uv,
-				const std::string& fileName);
+				const std::string& text);
 
 			/**
 			* @brief スプライトの座標位置を設定

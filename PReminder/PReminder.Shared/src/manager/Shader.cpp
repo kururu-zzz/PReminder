@@ -6,8 +6,9 @@ namespace gl
 {
 	namespace manager
 	{
-		GLuint CompileShader(AAssetManager* assetManager, pthread_mutex_t* mutex, GLenum shaderType, const std::string& fileName) {
-			void* data = ndk::LoadAssetFile(assetManager, mutex, fileName.c_str());
+		GLuint CompileShader(GLenum shaderType, const std::string& fileName) {
+			size_t size = 0;
+			void* data = ndk::LoadAssetFile(fileName.c_str(),&size);
 			const char* resource = (char*)data;
 			GLuint shader = glCreateShader(shaderType);
 			glShaderSource(shader, 1, &resource, 0);
@@ -73,7 +74,7 @@ namespace gl
 		{
 			if (shaderContainer.find(shaderType) != shaderContainer.end() && shaderContainer[shaderType].find(shaderName) == shaderContainer[shaderType].end())
 			{
-				GLuint shader = CompileShader(assetManager, mutex, shaderType, fileName);
+				GLuint shader = CompileShader(shaderType, fileName);
 				shaderContainer[shaderType].emplace(shaderName, shader);
 			}
 			return shaderContainer[shaderType][shaderName];

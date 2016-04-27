@@ -29,6 +29,19 @@ namespace gl
 			void CreateTexture(const std::string& fileName);
 
 			/**
+			* @brief テクスチャをバッファから作成、コンテナに登録
+			* @param keyName:テクスチャの登録名
+			* @param data:テクスチャの元データ
+			*/
+			void CreateTextureFromMemory(
+				const std::string& keyName, 
+				unsigned char* data,
+				unsigned int width,
+				unsigned int height,
+				int format = GL_RGBA
+			);
+
+			/**
 			* @brief テクスチャの作成、コンテナに登録
 			*/
 			void SetTexture(const std::string& fileName);

@@ -17,9 +17,8 @@
 #include <pthread.h>
 #include "core/android_native_app_glue.h"
 #include "sequence/Sequence.h"
-#include "../../PReminder.Shared/src/manager/Shader.h"
-#include "../../PReminder.Shared/src/manager/Texture.h"
 #include "../../PReminder.Shared/src/utility/DeviceInfo.h"
+#include "../../PReminder.Shared/src/utility/LoadAsset.h"
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "PReminder.NativeActivity", __VA_ARGS__))
 #define LOGW(...) ((void)__android_log_print(ANDROID_LOG_WARN, "PReminder.NativeActivity", __VA_ARGS__))
@@ -120,8 +119,7 @@ static int engine_init_display(struct engine* engine) {
 	engine->state.angle = 0;
 	device::info::SetWindowSize(w, h);
 
-	gl::manager::Shader::Get()->Init (engine->app->activity->assetManager, &engine->app->mutex);
-	gl::manager::Texture::Get()->Init(engine->app->activity->assetManager, &engine->app->mutex);
+	ndk::PrepareLoadAsset(engine->app->activity->assetManager, &engine->app->mutex);
 
 	if (!engine->sequenceManager)
 	{
